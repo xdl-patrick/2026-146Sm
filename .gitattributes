@@ -1,0 +1,26 @@
+# 二进制文件：禁止 Git 做行尾转换与文本 diff（避免谱数据被破坏）
+*.Spe    -text
+*.spe    -text
+*.Chn    -text
+*.chn    -text
+*.root   -text
+*.pdf    -text
+*.png    -text
+*.jpg    -text
+*.jpeg   -text
+*.xlsx   -text
+*.opju   -text
+*.zip    -text
+*.pptx   -text
+*.docx   -text
+
+# 文本文件：统一使用 LF 存储（只在提交时规范化，不改动工作区）
+*.py      text
+*.md      text
+*.json    text
+*.csv     text
+*.tex     text
+*.sh      text
+*.cc      text
+*.C       text
+*.h       text

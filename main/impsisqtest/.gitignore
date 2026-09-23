@@ -1,0 +1,31 @@
+# ROOT compiled objects
+*.so
+*.d
+*.pcm
+*_cc.so
+*_cc.d
+*_cc_ACLiC*
+*.rootmap
+
+# ROOT data (large binaries — track separately)
+data/
+*.root
+
+# Output plots
+*.pdf
+*.png
+plot/
+
+# Editor / IDE
+*.swp
+*~
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+*.o
+*.a

@@ -1,0 +1,38 @@
+# --- 原始数据：α 谱体积过大（7.9 GB，单文件最大 414 MB），无法入库 ---
+#     γ 原始数据只有 ~56 MB，且是 146Eu 半衰期分析的全部输入，因此入库以便复现
+data/raw/alpha_2024/
+data/raw/alpha_2025/
+data/raw/alpha_2026/
+data/raw/alpha_2023/
+
+# --- 派生产物 / 中间产物：可由 python scripts/run_all.py 重建 ---
+data/processed/
+figures_2026_tmp/
+
+# --- 重复副本：与 data/raw/gamma_eu146_2025/ 逐字节相同，只保留一处 ---
+data/reference/146Sm伽马谱数据/Sm147-2025/
+
+# --- 编译产物 ---
+*.so
+*.d
+*.pcm
+*_ACLiC_dict_rdict.pcm
+__pycache__/
+*.pyc
+
+# --- 归档目录：保留在本地备查，但不进版本库 ---
+legacy/intermediate_root/
+legacy/figures_2026/
+legacy/workspace_2026_04_dup/
+
+# --- 编辑器 / 系统 ---
+.vscode/
+Thumbs.db
+Desktop.ini
+~$*
+*.tmp
+_sizecheck.py
+
+# 注意：config/、data/reference/、data/results/、figures/、scripts/、docs/、
+# README.md 需要提交，因为它们是可复现结果的关键（配置 + 代码 + 结果表 + 论文图）。
+

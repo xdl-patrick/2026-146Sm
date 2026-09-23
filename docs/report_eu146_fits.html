@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>¹⁴⁶Eu 半衰期拟合汇总</title>
+<style>
+  body { font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif; margin: 24px; color: #222; }
+  h1 { font-size: 20px; } h2 { font-size: 16px; margin-top: 28px; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
+  table { border-collapse: collapse; font-size: 13px; }
+  th, td { border: 1px solid #ccc; padding: 4px 10px; text-align: right; }
+  th:first-child, td:first-child { text-align: left; }
+  th { background: #f3f5f8; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 14px; }
+  .card { border: 1px solid #e0e0e0; border-radius: 6px; padding: 8px; background: #fafafa; }
+  .card img { width: 100%; display: block; }
+  .card .name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .wide img { max-width: 100%; }
+  .note { font-size: 12px; color: #666; }
+  code { background: #f0f0f0; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>¹⁴⁶Eu 747keV 峰衰变拟合汇总</h1>
+<p class="note">数据来源：<code>data/reference/eu146_measurements.csv</code>（由人工整理的《gama 谱数据.xlsx》转出）。参考值 T<sub>1/2</sub>(¹⁴⁶Eu) = 4.61 ± 0.03 d。</p>
+<h2>拟合结果</h2>
+<table>
+<tr><th>测量条件</th><th>数据点</th><th>T<sub>1/2</sub> (d)</th><th>λ (1/h)</th><th>χ²/ndf</th><th>p 值</th><th>与参考值偏差 (σ)</th></tr>
+<tr><td>0</td><td>12</td><td>4.528 ± 0.795</td><td>0.006378</td><td>179.8/10</td><td>0.000</td><td>-0.10</td></tr>
+<tr><td>0_0.5</td><td>8</td><td>6.140 ± 2.483</td><td>0.004704</td><td>61.5/6</td><td>0.000</td><td>+0.62</td></tr>
+<tr><td>12.5</td><td>51</td><td>29.235 ± 31.558</td><td>0.000988</td><td>123008.4/49</td><td>0.000</td><td>+0.78</td></tr>
+<tr><td>1_0.5</td><td>42</td><td>7.311 ± 0.178</td><td>0.003950</td><td>276.8/40</td><td>0.000</td><td>+14.97</td></tr>
+<tr><td>Cu</td><td>71</td><td>4.453 ± 0.035</td><td>0.006486</td><td>945.9/69</td><td>0.000</td><td>-3.40</td></tr>
+<tr><td>Pb</td><td>58</td><td>4.495 ± 0.040</td><td>0.006425</td><td>680.0/56</td><td>0.000</td><td>-2.31</td></tr>
+</table>
+<h2>总览</h2>
+<div class="card wide"><div class="name">全部条件联络表</div><img src="../figures/halflife/eu146_fit_grid_747keV.png" alt="全部条件联络表"></div>
+<div class="card wide"><div class="name">全部条件叠加</div><img src="../figures/halflife/eu146_fit_allgroups_747keV.png" alt="全部条件叠加"></div>
+<h2>各测量条件单独拟合</h2>
+<div class="grid">
+<div class="card"><div class="name">0_0.5</div><img src="../figures/halflife/eu146_fit_0_0.5_747keV.png" alt="0_0.5"></div>
+<div class="card"><div class="name">0</div><img src="../figures/halflife/eu146_fit_0_747keV.png" alt="0"></div>
+<div class="card"><div class="name">12.5</div><img src="../figures/halflife/eu146_fit_12.5_747keV.png" alt="12.5"></div>
+<div class="card"><div class="name">1_0.5</div><img src="../figures/halflife/eu146_fit_1_0.5_747keV.png" alt="1_0.5"></div>
+<div class="card"><div class="name">Cu</div><img src="../figures/halflife/eu146_fit_Cu_747keV.png" alt="Cu"></div>
+<div class="card"><div class="name">Pb</div><img src="../figures/halflife/eu146_fit_Pb_747keV.png" alt="Pb"></div>
+</div>
+<h2>修正后数据：ln(计数率) 线性拟合</h2>
+<p class="note">数据来源：<code>data/reference/gama_v2/原始数据修正后_tidy.csv</code>（作者已把 Pb / Cu / 12.5cm 有机玻璃 / 0 / 0_0.5 / 1_0.5 六个阶段的绝对计数率差异修正掉，所以同一组的 ln(rate) 对时间是一条直线）。</p>
+<table>
+<tr><th>数据组</th><th>峰</th><th>点数</th><th>时间范围 (h)</th><th>T<sub>1/2</sub> (h)</th><th>T<sub>1/2</sub> (d)</th><th>χ²/ndf</th><th>与参考值偏差</th></tr>
+<tr><td>chamber1</td><td>633keV</td><td>75</td><td>54.6 – 1431.4</td><td>107.35 ± 0.15</td><td><b>4.473 ± 0.006</b></td><td>73.0/73</td><td>-2.97%</td></tr>
+<tr><td>chamber1</td><td>747keV</td><td>75</td><td>54.6 – 1431.4</td><td>104.76 ± 0.25</td><td><b>4.365 ± 0.010</b></td><td>73.0/73</td><td>-5.31%</td></tr>
+<tr><td>chamber2</td><td>633keV</td><td>80</td><td>55.7 – 1566.8</td><td>107.57 ± 0.29</td><td><b>4.482 ± 0.012</b></td><td>78.0/78</td><td>-2.78%</td></tr>
+<tr><td>chamber2</td><td>747keV</td><td>80</td><td>55.7 – 1566.8</td><td>103.79 ± 0.43</td><td><b>4.324 ± 0.018</b></td><td>78.0/78</td><td>-6.19%</td></tr>
+<tr><td>chamber3</td><td>633keV</td><td>82</td><td>56.2 – 1528.4</td><td>106.66 ± 0.20</td><td><b>4.444 ± 0.008</b></td><td>80.0/80</td><td>-3.60%</td></tr>
+<tr><td>chamber3</td><td>747keV</td><td>82</td><td>56.2 – 1528.4</td><td>104.50 ± 0.34</td><td><b>4.354 ± 0.014</b></td><td>80.0/80</td><td>-5.55%</td></tr>
+<tr><td>chamber4</td><td>633keV</td><td>82</td><td>56.0 – 1529.2</td><td>107.65 ± 0.19</td><td><b>4.486 ± 0.008</b></td><td>80.0/80</td><td>-2.70%</td></tr>
+<tr><td>chamber4</td><td>747keV</td><td>82</td><td>56.0 – 1529.2</td><td>104.02 ± 0.32</td><td><b>4.334 ± 0.013</b></td><td>80.0/80</td><td>-5.98%</td></tr>
+<tr><td>平均-633keV</td><td>633keV</td><td>4</td><td> – </td><td>107.29 ± 0.10</td><td><b>4.470 ± 0.004</b></td><td>15.4/3</td><td>-3.03%</td></tr>
+<tr><td>平均-747keV</td><td>747keV</td><td>4</td><td> – </td><td>104.39 ± 0.16</td><td><b>4.350 ± 0.007</b></td><td>5.6/3</td><td>-5.64%</td></tr>
+</table>
+<h3>加权平均与一致性检验</h3>
+<table>
+<tr><th>分组</th><th>合并条数</th><th>T<sub>1/2</sub> (d)</th><th>一致性 χ²/ndf</th><th>p 值</th></tr>
+<tr><td>峰 633keV</td><td>4</td><td>4.470 ± 0.004</td><td>5.13/3</td><td>0.002</td></tr>
+<tr><td>峰 747keV</td><td>4</td><td>4.350 ± 0.007</td><td>1.86/3</td><td>0.134</td></tr>
+<tr><td>数据组 chamber1</td><td>2</td><td>4.443 ± 0.005</td><td>79.16/1</td><td>0.000</td></tr>
+<tr><td>数据组 chamber2</td><td>2</td><td>4.434 ± 0.010</td><td>52.91/1</td><td>0.000</td></tr>
+<tr><td>数据组 chamber3</td><td>2</td><td>4.422 ± 0.007</td><td>30.38/1</td><td>0.000</td></tr>
+<tr><td>数据组 chamber4</td><td>2</td><td>4.447 ± 0.007</td><td>96.10/1</td><td>0.000</td></tr>
+<tr style='font-weight:bold'><td>总体加权平均</td><td>8</td><td>4.438 ± 0.003</td><td>38.12/7 (p=0.0000)</td><td>0.0000</td></tr>
+</table>
+<p class="note"><b>总体结果</b>：T<sub>1/2</sub>(¹⁴⁶Eu) = <b>4.438 ± 0.003 d</b>，比参考值 4.610 d 偏低 3.73%。<br><b>两个 γ 峰不一致</b>：633 keV 给出 4.470 ± 0.004 d，747 keV 给出 4.350 ± 0.007 d，相差约 2.5%，而各自统计误差仅 0.004–0.007 d — 这是真实的系统差异（峰面积/本底扣除/效率归一不同），投稿前需要排查。</p>
+<div class="card wide"><div class="name">4 组 × 2 个峰</div><img src="../figures/halflife/eu146_lnfit_reference_grid.png" alt="ln fit grid"></div>
+<div class="grid">
+<div class="card"><div class="name">chamber1_633keV</div><img src="../figures/halflife/eu146_lnfit_chamber1_633keV.png" alt="chamber1_633keV"></div>
+<div class="card"><div class="name">chamber1_747keV</div><img src="../figures/halflife/eu146_lnfit_chamber1_747keV.png" alt="chamber1_747keV"></div>
+<div class="card"><div class="name">chamber2_633keV</div><img src="../figures/halflife/eu146_lnfit_chamber2_633keV.png" alt="chamber2_633keV"></div>
+<div class="card"><div class="name">chamber2_747keV</div><img src="../figures/halflife/eu146_lnfit_chamber2_747keV.png" alt="chamber2_747keV"></div>
+<div class="card"><div class="name">chamber3_633keV</div><img src="../figures/halflife/eu146_lnfit_chamber3_633keV.png" alt="chamber3_633keV"></div>
+<div class="card"><div class="name">chamber3_747keV</div><img src="../figures/halflife/eu146_lnfit_chamber3_747keV.png" alt="chamber3_747keV"></div>
+<div class="card"><div class="name">chamber4_633keV</div><img src="../figures/halflife/eu146_lnfit_chamber4_633keV.png" alt="chamber4_633keV"></div>
+<div class="card"><div class="name">chamber4_747keV</div><img src="../figures/halflife/eu146_lnfit_chamber4_747keV.png" alt="chamber4_747keV"></div>
+</div>
+<h2>说明</h2>
+<p class="note">上排：主图为计数率随时间变化（对数纵轴）与指数拟合，下排为标准化残差。χ²/ndf 明显大于 1 的分组（如 <code>12.5</code>）说明该标记下混入了不同靶位/距离的测量，不是一条单一的衰变曲线，需要先按靶号拆分。</p>
+</body></html>

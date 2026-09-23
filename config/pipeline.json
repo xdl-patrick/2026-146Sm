@@ -1,0 +1,115 @@
+{
+  "_comment": "146Sm / 146Eu 半衰期测量 —— 全流程统一配置。所有脚本只从这里读参数，不再在源码里硬编码。",
+
+  "paths": {
+    "raw_alpha_2024": "data/raw/alpha_2024",
+    "raw_alpha_2025": "data/raw/alpha_2025",
+    "raw_alpha_2026": "data/raw/alpha_2026",
+    "raw_gamma_eu146": "data/raw/gamma_eu146_2025",
+    "processed": "data/processed",
+    "results": "data/results",
+    "figures": "figures",
+    "config": "config"
+  },
+
+  "alpha_offline": {
+    "_comment": "对应 legacy/macros_2026/Offline_146Sm2026_*.C。每个 run 文件里 4 块双面硅条探测器 = 4 个 ADC 模块，每模块 32 道：0-15 为正面(front)，16-31 为背面(back)。",
+    "tree": "Tree1",
+    "file_pattern": "^2026_146Sm(\\d+)$",
+    "adc_modules": 4,
+    "channels_per_module": 32,
+    "side_split": 16,
+    "energy_unit": "MeV",
+    "hist": {
+      "bins": 400,
+      "min": 0.5,
+      "max": 8.0
+    },
+    "default_threshold_adc": 180,
+    "thresholds_json": "alpha_thresholds_2026.json",
+    "multiplicity_max": 1,
+    "calibration_json": "alpha_calibration_2026.json",
+    "calibration_points": "alpha_calibration_points.json",
+    "overview_spectrum": "E3f",
+    "max_files": 0,
+
+    "_sources_comment": "多代数据源。2024/2025 是 128 通道的旧格式，2026 是本次 8 块靶的数据。要测 146Sm 半衰期必须三代一起纳入（跨年才有可观测的衰变量）。",
+    "sources": [
+      { "name": "alpha_2026", "dir_key": "paths.raw_alpha_2026", "pattern": "^2026_146Sm(\\d+)$", "enabled": true },
+      { "name": "alpha_2025", "dir_key": "paths.raw_alpha_2025", "pattern": "^2025_146Sm(\\d+)$", "enabled": false },
+      { "name": "alpha_2024", "dir_key": "paths.raw_alpha_2024", "pattern": "^146Sm(\\d+)$",    "enabled": false }
+    ]
+  },
+
+  "alpha_peaks": {
+    "_comment": "α 特征峰窗口（MeV）。默认值取自旧脚本注释与核素数据表，请按实际谱确认后修改。",
+    "Sm146": { "min": 2.40, "max": 2.52, "note": "146Sm -> 142Nd 基态, Ea = 2.4551 MeV" },
+    "Sm147": { "min": 2.18, "max": 2.28, "note": "147Sm -> 143Nd 基态, Ea = 2.2233 MeV" },
+    "Eu147": { "min": 2.84, "max": 2.96, "note": "旧脚本 SmEu_improved_calibration.C 标注 2.90 MeV" },
+    "Am241a": { "min": 5.40, "max": 5.46, "note": "241Am, 13.1%" },
+    "Am241b": { "min": 5.46, "max": 5.52, "note": "241Am, 84.8%" }
+  },
+
+  "alpha_calibration": {
+    "_comment": "对应 legacy/macros_2026/Cal*.C 与 CalculateCalibrationCoefficients.C。用 α 源的双峰(146Sm 2.28 MeV / 146Eu 2.90 MeV 或 241Am 5.443/5.486 MeV)做逐道刻度。",
+    "tree": "Tree1",
+    "sources": {
+      "am241": {
+        "peaks_mev": [5.4428, 5.48556],
+        "intensity": [0.131, 0.848],
+        "fit_window_channels": [2000, 5000],
+        "search_range_channels": [2500, 4500]
+      },
+      "sm147_eu147": {
+        "peaks_mev": [2.28, 2.9],
+        "fit_window_channels": [500, 4000],
+        "search_range_channels": [800, 3600]
+      }
+    },
+    "default_source": "am241",
+    "min_entries": 50,
+    "max_sigma_channels": 60
+  },
+
+  "gamma": {
+    "_comment": "对应 legacy/workspace_2025/Eu146-2025_scripts/{AnalyzeSPEandROOTFiles.C, runFullAnalysis.C, fit_correction.C}。高纯锗探测器的 146Eu 特征 γ 峰。",
+    "spe_channels": 16384,
+    "spe_header_lines": 12,
+    "energy_calibration": {
+      "slope_kev_per_channel": 0.200927085,
+      "intercept_kev": -3.964978762
+    },
+    "peaks": {
+      "633keV": { "center": 633.0, "window": [629.0, 635.0], "bg_width": 4.0, "bg_gap": 2.0 },
+      "747keV": { "center": 747.0, "window": [745.0, 749.0], "bg_width": 4.0, "bg_gap": 2.0 }
+    },
+    "primary_peak": "747keV"
+  },
+
+  "eu146_halflife": {
+    "_comment": "146Eu 半衰期拟合，用于验证 HPGe 系统。参考值 4.61 d。",
+    "reference_halflife_days": 4.61,
+    "reference_halflife_error_days": 0.03,
+    "time_from": "first_measurement",
+    "absorber_groups": ["Pb", "Cu"]
+  },
+
+  "normalization": {
+    "_comment": "8 块靶的 146Eu 活度归一。reference_targets 为做过绝对活度测量的靶，reference_day 用 04/05 步挑出的最佳测量日。",
+    "n_targets": 8,
+    "reference_targets": [],
+    "reference_day": null
+  },
+
+  "sm146_halflife": {
+    "_comment": "最终 146Sm 半衰期。alpha 侧给出每秒 α 计数，gamma 侧给出归一后的 146Eu 活度，两者之比随时间变化即为 146Sm/146Eu 生成比。",
+    "reference_halflife_years": 1.03e8,
+    "reference_halflife_error_years": 0.04e8
+  },
+
+  "plot": {
+    "formats": ["pdf", "png"],
+    "png_dpi": 200,
+    "style": "default"
+  }
+}

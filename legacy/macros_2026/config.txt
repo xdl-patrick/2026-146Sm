@@ -1,0 +1,169 @@
+[WDAQ-Linux]
+Experiment=2026_146Sm
+Comment=exp comment
+Run=59
+ADC=5	QDC=0	TDC=0	MTDC=0	Scaler=1
+CbltAddress=0xcccc0000
+TDCCommonStop=0
+[Card_0]
+Type=CAEN.MOD.V785	GEO=4	Channels=32	BaseAddress=0x11110000	CbltStatus=0x2
+ID   On-off  Threshold  NTID    Name    Comment
+0	0	2	1	adc0ch0	;ADC channel comment
+1	0	2	1	adc0ch1	;ADC channel comment
+2	0	2	1	adc0ch2	;ADC channel comment
+3	0	2	1	adc0ch3	;ADC channel comment
+4	0	2	1	adc0ch4	;ADC channel comment
+5	0	2	1	adc0ch5	;ADC channel comment
+6	0	2	1	adc0ch6	;ADC channel comment
+7	0	2	1	adc0ch7	;ADC channel comment
+8	0	2	1	adc0ch8	;ADC channel comment
+9	0	2	1	adc0ch9	;ADC channel comment
+10	0	2	1	adc0ch10	;ADC channel comment
+11	0	2	1	adc0ch11	;ADC channel comment
+12	0	2	1	adc0ch12	;ADC channel comment
+13	0	2	1	adc0ch13	;ADC channel comment
+14	0	2	1	adc0ch14	;ADC channel comment
+15	0	2	1	adc0ch15	;ADC channel comment
+16	0	2	1	adc0ch16	;ADC channel comment
+17	0	2	1	adc0ch17	;ADC channel comment
+18	0	2	1	adc0ch18	;ADC channel comment
+19	0	2	1	adc0ch19	;ADC channel comment
+20	0	2	1	adc0ch20	;ADC channel comment
+21	0	2	1	adc0ch21	;ADC channel comment
+22	0	2	1	adc0ch22	;ADC channel comment
+23	0	2	1	adc0ch23	;ADC channel comment
+24	0	2	1	adc0ch24	;ADC channel comment
+25	0	2	1	adc0ch25	;ADC channel comment
+26	0	2	1	adc0ch26	;ADC channel comment
+27	0	2	1	adc0ch27	;ADC channel comment
+28	0	2	1	adc0ch28	;ADC channel comment
+29	0	2	1	adc0ch29	;ADC channel comment
+30	0	2	1	adc0ch30	;ADC channel comment
+31	0	2	1	adc0ch31	;ADC channel comment
+[Card_1]
+Type=CAEN.MOD.V785	GEO=7	Channels=32	BaseAddress=0x22220000	CbltStatus=0x3
+ID   On-off  Threshold  NTID    Name    Comment
+0	0	2	1	adc1ch0	;ADC channel comment
+1	0	2	1	adc1ch1	;ADC channel comment
+2	0	2	1	adc1ch2	;ADC channel comment
+3	0	2	1	adc1ch3	;ADC channel comment
+4	0	2	1	adc1ch4	;ADC channel comment
+5	0	2	1	adc1ch5	;ADC channel comment
+6	0	2	1	adc1ch6	;ADC channel comment
+7	0	2	1	adc1ch7	;ADC channel comment
+8	0	2	1	adc1ch8	;ADC channel comment
+9	0	2	1	adc1ch9	;ADC channel comment
+10	0	2	1	adc1ch10	;ADC channel comment
+11	0	2	1	adc1ch11	;ADC channel comment
+12	0	2	1	adc1ch12	;ADC channel comment
+13	0	2	1	adc1ch13	;ADC channel comment
+14	0	2	1	adc1ch14	;ADC channel comment
+15	0	2	1	adc1ch15	;ADC channel comment
+16	0	2	1	adc1ch16	;ADC channel comment
+17	0	2	1	adc1ch17	;ADC channel comment
+18	0	2	1	adc1ch18	;ADC channel comment
+19	0	2	1	adc1ch19	;ADC channel comment
+20	0	2	1	adc1ch20	;ADC channel comment
+21	0	2	1	adc1ch21	;ADC channel comment
+22	0	2	1	adc1ch22	;ADC channel comment
+23	0	2	1	adc1ch23	;ADC channel comment
+24	0	2	1	adc1ch24	;ADC channel comment
+25	0	2	1	adc1ch25	;ADC channel comment
+26	0	2	1	adc1ch26	;ADC channel comment
+27	0	2	1	adc1ch27	;ADC channel comment
+28	0	2	1	adc1ch28	;ADC channel comment
+29	0	2	1	adc1ch29	;ADC channel comment
+30	0	2	1	adc1ch30	;ADC channel comment
+31	0	2	1	adc1ch31	;ADC channel comment
+[Card_2]
+Type=CAEN.MOD.V785	GEO=10	Channels=32	BaseAddress=0x33330000	CbltStatus=0x3
+ID   On-off  Threshold  NTID    Name    Comment
+0	0	2	1	adc2ch0	;ADC channel comment
+1	0	2	1	adc2ch1	;ADC channel comment
+2	0	2	1	adc2ch2	;ADC channel comment
+3	0	2	1	adc2ch3	;ADC channel comment
+4	0	2	1	adc2ch4	;ADC channel comment
+5	0	2	1	adc2ch5	;ADC channel comment
+6	0	2	1	adc2ch6	;ADC channel comment
+7	0	2	1	adc2ch7	;ADC channel comment
+8	0	2	1	adc2ch8	;ADC channel comment
+9	0	2	1	adc2ch9	;ADC channel comment
+10	0	2	1	adc2ch10	;ADC channel comment
+11	0	2	1	adc2ch11	;ADC channel comment
+12	0	2	1	adc2ch12	;ADC channel comment
+13	0	2	1	adc2ch13	;ADC channel comment
+14	0	2	1	adc2ch14	;ADC channel comment
+15	0	2	1	adc2ch15	;ADC channel comment
+16	0	2	1	adc2ch16	;ADC channel comment
+17	0	2	1	adc2ch17	;ADC channel comment
+18	0	2	1	adc2ch18	;ADC channel comment
+19	0	2	1	adc2ch19	;ADC channel comment
+20	0	2	1	adc2ch20	;ADC channel comment
+21	0	2	1	adc2ch21	;ADC channel comment
+22	0	2	1	adc2ch22	;ADC channel comment
+23	0	2	1	adc2ch23	;ADC channel comment
+24	0	2	1	adc2ch24	;ADC channel comment
+25	0	2	1	adc2ch25	;ADC channel comment
+26	0	2	1	adc2ch26	;ADC channel comment
+27	0	2	1	adc2ch27	;ADC channel comment
+28	0	2	1	adc2ch28	;ADC channel comment
+29	0	2	1	adc2ch29	;ADC channel comment
+30	0	2	1	adc2ch30	;ADC channel comment
+31	0	2	1	adc2ch31	;ADC channel comment
+[Card_3]
+Type=CAEN.MOD.V785	GEO=13	Channels=32	BaseAddress=0x44440000	CbltStatus=0x3
+ID   On-off  Threshold  NTID    Name    Comment
+0	0	2	1	adc3ch0	;ADC channel comment
+1	0	2	1	adc3ch1	;ADC channel comment
+2	0	2	1	adc3ch2	;ADC channel comment
+3	0	2	1	adc3ch3	;ADC channel comment
+4	0	2	1	adc3ch4	;ADC channel comment
+5	0	2	1	adc3ch5	;ADC channel comment
+6	0	2	1	adc3ch6	;ADC channel comment
+7	0	2	1	adc3ch7	;ADC channel comment
+8	0	2	1	adc3ch8	;ADC channel comment
+9	0	2	1	adc3ch9	;ADC channel comment
+10	0	2	1	adc3ch10	;ADC channel comment
+11	0	2	1	adc3ch11	;ADC channel comment
+12	0	2	1	adc3ch12	;ADC channel comment
+13	0	2	1	adc3ch13	;ADC channel comment
+14	0	2	1	adc3ch14	;ADC channel comment
+15	0	2	1	adc3ch15	;ADC channel comment
+16	0	2	1	adc3ch16	;ADC channel comment
+17	0	2	1	adc3ch17	;ADC channel comment
+18	0	2	1	adc3ch18	;ADC channel comment
+19	0	2	1	adc3ch19	;ADC channel comment
+20	0	2	1	adc3ch20	;ADC channel comment
+21	0	2	1	adc3ch21	;ADC channel comment
+22	0	2	1	adc3ch22	;ADC channel comment
+23	0	2	1	adc3ch23	;ADC channel comment
+24	0	2	1	adc3ch24	;ADC channel comment
+25	0	2	1	adc3ch25	;ADC channel comment
+26	0	2	1	adc3ch26	;ADC channel comment
+27	0	2	1	adc3ch27	;ADC channel comment
+28	0	2	1	adc3ch28	;ADC channel comment
+29	0	2	1	adc3ch29	;ADC channel comment
+30	0	2	1	adc3ch30	;ADC channel comment
+31	0	2	1	adc3ch31	;ADC channel comment
+[Card_4]
+Type=CAEN.MOD.V785N	GEO=16	Channels=16	BaseAddress=0x55550000	CbltStatus=0x1
+ID   On-off  Threshold  NTID    Name    Comment
+0	0	2	1	adc4ch0	;ADC channel comment
+1	0	2	1	adc4ch1	;ADC channel comment
+2	0	2	1	adc4ch2	;ADC channel comment
+3	0	2	1	adc4ch3	;ADC channel comment
+4	0	2	1	adc4ch4	;ADC channel comment
+5	0	2	1	adc4ch5	;ADC channel comment
+6	0	2	1	adc4ch6	;ADC channel comment
+7	0	2	1	adc4ch7	;ADC channel comment
+8	0	2	1	adc4ch8	;ADC channel comment
+9	0	2	1	adc4ch9	;ADC channel comment
+10	0	2	1	adc4ch10	;ADC channel comment
+11	0	2	1	adc4ch11	;ADC channel comment
+12	0	2	1	adc4ch12	;ADC channel comment
+13	1	250	1	adc4ch13	;ADC channel comment
+14	1	250	1	adc4ch14	;ADC channel comment
+15	1	250	1	adc4ch15	;ADC channel comment
+[Card_5]
+Type=CAEN.MOD.V560	GEO=19	Channels=16	BaseAddress=0xbb100000
+
