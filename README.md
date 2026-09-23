@@ -49,20 +49,23 @@ config/                     所有可调参数集中在这里（脚本里不再�
   alpha_thresholds_2026.json    4x32 逐道阈值
   runs.json                 run/文件 -> 靶编号、时间（需人工填写，见 05 步）
 data/
-  raw/                      原始数据（只读，不入 git）
-    alpha_2024/             2024 年束流实验原始数据（146SmN.root，128 通道）
-    alpha_2025/             2025 年 α run（2025_146SmN.root，128 通道）
-    alpha_2026/             2026 年 α run（2026_146SmN.root，4~144 通道）
-    gamma_eu146_2025/       146Eu 的 HPGe 原始谱（*.Spe，357 个）
-  reference/                人工整理的结果表（入 git，见其中 README.md）
-    gama 谱数据.xlsx        ★ 作者手工整理的 146Eu 计数率与半衰期数据（权威来源）
-    eu146_measurements.csv  由上面那张表转出的逐次测量规范表（242 行）
+  raw/                      原始数据（只读）
+    alpha_2024/             2024 年束流实验原始数据（146SmN.root，128 通道）★ 不入 git
+    alpha_2025/             2025 年 α run（2025_146SmN.root，128 通道）★ 不入 git
+    alpha_2026/             2026 年 α run（2026_146SmN.root，4~144 通道）★ 不入 git
+    gamma_eu146_2025/       146Eu 的 HPGe 原始谱（*.Spe，357 个）✔ 入 git（56 MB）
+  reference/                人工整理的结果表（✔ 入 git，见其中 README.md）
+    gama 谱数据.xlsx        ★ 作者手工整理的 146Eu 计数率与半衰期数据（v1，权威来源）
+    gama 谱数据_v2.xlsx     ★ 2026-01 更新版（4 个靶室 × Pb/Cu/12.5cm/0/0_0.5/1_0.5 六阶段）
+    eu146_measurements.csv  由 v1 表转出的逐次测量规范表（242 行）
     eu146_series.csv        用于 ln 拟合的时间序列
-    gama_excel_sheets/      原表 4 个工作表的忠实导出，便于核对
-  processed/                可重建的派生产物（不入 git）
+    gama_excel_sheets/      v1 表 4 个工作表的忠实导出，便于核对
+    gama_v2/                v2 表 7 个工作表的转换产物（sheets/ + *_tidy.csv + tables/）
+    146Sm伽马谱数据/        作者桌面的原始文件夹副本（xlsx + Origin 工程）
+  processed/                可重建的派生产物 ★ 不入 git
     gamma_eu146_2025_root/  01 步产出的 ROOT
     alpha_spectra/          02 步产出的 8 个求和谱
-  results/                  结果表（入 git）
+  results/                  结果表 ✔ 入 git
 scripts/
   lib/                      公共库（config/logutil/rootio/spectrum/fitting/plotting）
   01_spe_to_root.py         HPGe 原始谱 -> ROOT + 测量元数据
@@ -71,24 +74,61 @@ scripts/
   04_eu146_halflife.py      ¹⁴⁶Eu 半衰期拟合
   05_normalize_targets.py   8 块靶 ¹⁴⁶Eu 活度归一
   06_sm146_halflife.py      ¹⁴⁶Sm 半衰期
+  07_eu146_lnfit_reference.py  用 v2 表「修正后」数据做 ln(计数率) 线性拟合（论文用）
   run_all.py                一键全流程
   tools/
     import_legacy_config.py 从旧 ROOT 宏抽取刻度系数/阈值 -> config/*.json
-figures/                    图片输出（不入 git）
+    import_gama_excel.py    v1 Excel -> eu146_measurements.csv / eu146_series.csv
+    import_gama_excel_v2.py v2 Excel（7 个工作表）-> data/reference/gama_v2/
+    make_fit_report.py      汇总 docs/report_eu146_fits.html
+figures/                    图片输出 ✔ 入 git（48 个文件，3.8 MB）
   calibration/  alpha/  gamma/  halflife/   migration/
 docs/
   DATA_SOURCES.md           全部相关数据文件夹清点（含未纳入本项目的数据）
   MIGRATION.md              本次从"分散脚本"到统一项目做了什么
-legacy/                     旧脚本归档（保留备查，不作为流程一部分）
+legacy/                     旧脚本归档 ✔ 入 git（仅 1.1 MB；
+                            其中 intermediate_root/ 与 figures_2026/ 的大文件已忽略）
   macros_2026/              原 D:\Sm147-2026 根目录下的 62 个 .C/.cc/.py 等
   workspace_2025/           原 D:\Sm147-2025 的脚本 + Eu146-2025 的分析脚本
   intermediate_root/        旧的中间产物 .root（sadd/sm146a/sum_all_calibrated/...）
   figures_2026/             旧流程散落在根目录的 png/pdf
   NOTES.md                  归档清单 + 旧脚本与新脚本的对应关系
-IMPSiSqTest/                另一个子课题：²⁴¹Am α 峰形与分辨率研究（保持独立）
+IMPSiSqTest/                另一个子课题：²⁴¹Am α 峰形与分辨率研究
+                            ✔ 已由 git 子模块转为普通文件，随本仓库一起纳入
 docs/DATA_SOURCES.md        本机相关数据文件夹清点
 docs/MIGRATION.md           本次整理做了什么、保真度验证、仍需人工输入的部分
 ```
+
+---
+
+## 版本库内容说明
+
+本仓库（`github.com/xdl-patrick/2026-146Sm`）的收录范围：
+
+**已纳入**（共 596 个文件，约 63 MB）
+
+| 内容 | 体积 | 说明 |
+|---|---|---|
+| `scripts/`、`config/`、`docs/`、`README.md` | ~0.2 MB | 全部分析代码与配置，`run_all.py` 一键复现 |
+| `data/results/` | 0.2 MB | 结果表（csv + LaTeX） |
+| `data/reference/` | 57.8 MB | 作者整理的 Excel、转换产物、Origin 工程 |
+| `data/raw/gamma_eu146_2025/` | 56 MB | 357 个 γ 原始 `.Spe`（¹⁴⁶Eu 分析的全部输入） |
+| `figures/` | 3.8 MB | 标定 / alpha / gamma / 半衰期论文图 |
+| `legacy/`（非忽略部分） | 1.1 MB | 旧脚本归档 |
+| `main/`、`IMPSiSqTest/` | 0.3 MB | ²⁴¹Am 峰形子项目源码 |
+
+**未纳入**（见 `.gitignore`）
+
+| 内容 | 体积 | 原因 |
+|---|---|---|
+| `data/raw/alpha_2024\|2025\|2026/` | 7.9 GB | 超出 GitHub 单文件 100 MB 硬上限（最大单文件 414 MB） |
+| `data/processed/` | 260 MB | 可由 `python scripts/run_all.py` 重建 |
+| `legacy/intermediate_root/`、`legacy/figures_2026/` | 1.0 GB | 旧流程中间产物，保留在本地备查 |
+| `data/reference/146Sm伽马谱数据/Sm147-2025/` | 56 MB | 与 `data/raw/gamma_eu146_2025/` 逐字节相同的重复副本 |
+
+> **注意**：α 原始数据未入库，因此单靠 clone 无法完整复现 α 分析；
+> 需要把 `data/raw/alpha_2024`、`alpha_2025`、`alpha_2026` 放到对应位置。
+> γ 部分（含 ¹⁴⁶Eu 半衰期拟合）则可以完全复现。
 
 ---
 
